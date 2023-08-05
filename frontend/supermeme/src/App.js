@@ -5,9 +5,14 @@ import Worldid from './components/World/Worldid';
 
 function App() {
 
-  function onSuccess () {
+ 
+    const onSuccess = (result) => {
+      console.log("onSuccess", result);
+      
 
-  }
+    };
+  
+  
 
   function handleProof () {
 
@@ -15,11 +20,12 @@ function App() {
 
   return (
     <IDKitWidget
-      action=""
+      action="hello"
       onSuccess={onSuccess}
       handleVerify={handleProof}
-      app_id={process.env.REACT_APP_appID}
+      app_id="app_staging_00f03680f51ad2a5ab9345c81184396f"
       credential_types={[CredentialType.Orb, CredentialType.Phone]}
+      enableTelemetry
     >
     {({ open }) => <button onClick={open}>Verify with World ID</button>}
     </IDKitWidget>
