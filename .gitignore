@@ -8,6 +8,8 @@ out/
 /broadcast/**/dry-run/
 /frontend/node_modules
 /frontend/.env
+/Hardhat_Mode/node_modules
+/Hardhat_Mode/.env
 
 # Docs
 docs/
