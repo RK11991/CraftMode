@@ -4,32 +4,39 @@ import { useAccount, useConnect, useEnsName } from 'wagmi';
 import { ethers } from 'ethers';
 import { usePrepareSendTransaction, useSendTransaction, useWaitForTransaction, } from 'wagmi'
 import { utils } from 'ethers'
+import { useDebounce } from 'use-debounce';
 
 function TransferFunds () {
     const { address, isConnected } = useAccount();
     const { provider } = useConnect();
     
     const [amount, setAmount] = useState('');
+    const [debouncedAmount] = useDebounce(amount, 500);
+
     const handleAmountChange = (event) => {
         setAmount(event.target.value);
     };
-    console.log("amount", amount);
+   // console.log("amount", amount);
 
     const [add, setAdd] = useState('');
+    const [debouncedTo] = useDebounce(add, 500);
+
     const handleAddressChange = (event) => {
         setAdd(event.target.value);
     };
-    console.log("add: ", add);
+   // console.log("add: ", add);
 
     async function transferETH() {
-        sendTransaction();
+       
+        console.log(config);
+         sendTransaction();
         
     }
     const val = ethers.utils.parseEther("0.001");
-    console.log("val: ", val);
+   // console.log("val: ", val);
     const { config } = usePrepareSendTransaction({
-        to: "0x7199D548f1B30EA083Fe668202fd5E621241CC89",
-        value: val._hex,
+        to: debouncedTo,
+        value: debouncedAmount ? utils.parseEther(debouncedAmount) : undefined,
     })
     const { data, sendTransaction } = useSendTransaction(config);
 
