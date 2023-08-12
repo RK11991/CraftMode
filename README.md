@@ -20,11 +20,11 @@ To get started with CraftMode, follow these steps:
 git clone https://github.com/your-username/CraftMode.git
 ```
 
-2. **Install Dependencies**: Navigate to the project directory and install the required dependencies.
+2. **Install Dependencies**: Navigate to the project directory folder you will working on and install the required dependencies.
 
 ```bash
-cd CraftMode
-npm install
+cd CraftMode/<FolderName>
+yarn
 ```
 
 3. **Configuration**: Customize the configuration files as per your requirements. Be sure to set up your RPC Mode provider details and any other necessary configurations.
